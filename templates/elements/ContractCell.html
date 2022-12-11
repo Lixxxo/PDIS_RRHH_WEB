@@ -1,0 +1,55 @@
+<div class="card card-body bg-dark text-white flexRow">
+    <tr><h6>
+        Sueldo
+        <input
+      type="text"
+      name="salary"
+      value="{{format_currency(contract.salary)}}"
+      class="form-control bg-dark text-white rounded-0"
+      disabled
+    />
+    </h6>
+    <h6>
+        Proyecto
+        <input
+      type="text"
+
+      value="{{contract.project.name}}"
+      class="form-control bg-dark text-white rounded-0"
+      disabled
+        />
+    </h6>
+    <h6>
+        Estado
+        <input
+      type="text"
+      name="state"
+      value="{{contract.state}}"
+      class="form-control bg-dark text-white rounded-0"
+      disabled
+    />
+    </h6>
+
+    <h6>
+        Fecha de inicio
+        <input
+      type="text"
+
+      value="{{contract.start_date}}"
+      class="form-control bg-dark text-white rounded-0"
+      disabled
+        />
+    </h6>
+
+    <h6>
+        Fecha de término
+        <input
+      type="text"
+
+      value="{{contract.end_date}}"
+      class="form-control bg-dark text-white rounded-0"
+      disabled
+        />
+    </h6>
+    </tr>
+</div>

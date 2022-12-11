@@ -1,0 +1,54 @@
+{% extends 'partials/forms/Form.html' %}
+{% block form_url %}
+{{url_for('contracts.hire')}}
+{% endblock %}
+{% block form %}
+
+<h1 class="h5 mb-4">Contratar Trabajador</h1>
+
+<div class="mb-3">
+  <input
+    type="text"
+    name="employee_id"
+    value="{{employee.id}}"
+    class="form-control rounded-0 bg-dark border-0 text-white"
+    hidden
+    required
+  />
+  <label >Nombre:</label>
+  <input
+    type="text"
+    name="name"
+    value="{{employee.name}}"
+    class="form-control rounded-0 bg-dark border-0 text-white"
+    placeholder="Nombre del trabajador"
+    disabled
+    required
+  />
+</div>
+<div class="mb-3">
+  <label >Proyecto:</label>
+
+  <select
+    name="project_id"
+    class="form-control"  >
+    {% for project in projects %}
+      <option value="{{project.id}}">{{project.name}}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<div class="mb-3">
+  <label >Sueldo:</label>
+  <input
+    type="number"
+    name="salary"
+    id="salary"
+    class="form-control rounded-0 bg-dark border-0 text-white"
+    required
+  />
+</div>
+
+<button class="btn btn-primary">Contratar</button>
+
+{% endblock %}

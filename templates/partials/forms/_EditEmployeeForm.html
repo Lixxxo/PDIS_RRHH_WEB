@@ -1,0 +1,41 @@
+{% extends 'partials/forms/Form.html' %}
+{% block form_url %}
+{{url_for('employees.update', employee_id=employee.id)}}
+{% endblock %}
+
+{% block form %}
+<h1 class="h5 mb-4">Trabajador</h1>
+
+<div class="mb-3">
+  <label>Nombre:</label>
+  <input
+    type="text"
+    name="name"
+    value="{{employee.name}}"
+    class="form-control rounded-0 bg-dark border-0 text-white"
+    autofocus
+    required
+  />
+</div>
+
+<div class="mb-3">
+  <label>Rut:</label>
+  <input
+    type="text"
+    name="rut"
+    value="{{employee.rut}}"
+    class="form-control rounded-0 bg-dark border-0 text-white"
+        disabled
+    required
+  />
+</div>
+<div class="flexRow">
+  <button class="btn btn-primary bg-dark md-2">Guardar</button>
+  <div class=md-3">
+    <a
+      href="{{ url_for('contracts.index', employee_id=employee.id)}}"
+      class="btn btn-warning form-control rounded-0 bg-dark  text-white">Ver Contratos</a>
+
+  </div>
+</div>
+{% endblock %}

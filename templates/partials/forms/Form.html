@@ -1,0 +1,20 @@
+
+<div class="card-body .w-100">
+    <div class="bg-black text-light p-3">
+        <form class="card bg-black text-light"
+            action="{% block form_url %}{% endblock %}"
+            method="POST"
+                    >
+            {% block form %}
+
+            {% endblock %}
+        </form>
+
+    </div>
+</div>
+
+<script>
+  format_numbers_url = "{{url_for('format.format_default')}}"
+</script>
+<script src="{{url_for('static', filename='js/ajax.js')}}"></script>
+

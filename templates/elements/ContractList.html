@@ -1,0 +1,22 @@
+<div class="flexRow">
+    <div class="flexColumn card mb-1 bg-black text-white">
+
+        {% set this_contracts = contracts %}
+        {% set header = "Contratos" %}
+
+        {% if projects %}
+          {% set this_contracts = employee.active_contracts %}
+          {% set header = "Contratos activos de " + employee.name %}
+        {% endif %}
+        <div>
+           <h1 class="h5 mb-6">{{header}}</h1>
+        </div>
+
+        <div>
+            {% for contract in this_contracts %}
+                {% include 'elements/ContractCell.html' %}
+            {% endfor %}
+        </div>
+
+    </div>
+</div>

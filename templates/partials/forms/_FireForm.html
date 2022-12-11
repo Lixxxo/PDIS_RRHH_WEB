@@ -1,0 +1,88 @@
+{% extends 'partials/forms/Form.html' %}
+{% block form_url %}
+{{url_for('contracts.fire', employee_id=employee.id)}}
+{% endblock %}
+
+{% block form %}
+
+<h1 class="h5 mb-4">Desvincular Trabajador</h1>
+
+<div class="mb-3">
+    <label>Nombre:</label>
+    <input
+            type="text"
+            name="employee_name"
+            class="form-control rounded-0 bg-dark border-0 text-white"
+            value="{{employee.name}}"
+            disabled
+
+    />
+</div>
+
+<div class="mb-3">
+    <label>Contratos:</label>
+    <input
+            name="contract_id"
+            id="contract_id"
+            disabled
+            hidden
+            required
+    />
+    <select name="contract_id"
+            class="form-control projectSelect"
+            {% if contracts %}
+            selected="{{contracts.0.project_id}}"
+            {% endif %}
+    >
+
+        {% for contract in employee.active_contracts %}
+        <option
+                value="{{contract.id}}"
+        >{{contract.project.name}}</option>
+
+        {% endfor %}
+    </select>
+
+</div>
+
+
+<div class="flexRow">
+    <div class="mb-3">
+        <label >Sueldo total entre todos los proyectos:</label>
+        <input
+                type="text"
+                name="total_salary"
+                id="total_salary"
+                class="form-control rounded-0 bg-dark border-0 text-white"
+                disabled
+                required
+        />
+    </div>
+    <div class="mb-3">
+        <label id="salary_lbl">Sueldo en el proyecto: </label>
+        <input
+                type="text"
+                id="contract_salary"
+                name="contract_salary"
+                class="form-control rounded-0 bg-dark border-0 text-white"
+                disabled
+                required
+        />
+
+    </div>
+</div>
+<button class="btn btn-danger unlink">Desvincular</button>
+{% block script %}
+
+<script>
+    // retrieve data from flask template
+    const contracts = JSON.parse('{{ employee.active_contracts|tojson }}');
+    const employee = JSON.parse('{{ employee|tojson }}');
+
+</script>
+<script src="{{url_for('static', filename='js/FireForm.js')}}"></script>
+
+{% endblock %}
+{% endblock %}
+
+

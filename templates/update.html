@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{employee.name}}
+{% endblock %}
+{% block body %}
+
+<!-- MESSAGE -->
+{% include 'partials/_message.html' %}
+<div class="flexRow">
+
+  <!-- FORM -->
+  {%  include 'partials/forms/_EditEmployeeForm.html' %}
+
+</div>
+<div class="flexRow">
+  {% include 'elements/ContractList.html'%}
+
+
+</div>
+
+{% endblock %}
