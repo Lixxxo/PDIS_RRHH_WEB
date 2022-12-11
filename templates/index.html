@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+
+
+<div class="flexRow">
+
+    <div class="col-md-5 p-3">
+      <!-- MESSAGE -->
+      {% include 'partials/_message.html' %}
+
+      <!-- FORM -->
+      {%  include 'partials/forms/_AddEmployeeForm.html' %}
+
+    </div>
+
+    <!-- employees list -->
+    <div class="col-md-5 p-3">
+      {% for employee in employees %}
+        {% include 'elements/EmployeeCell.html' %}
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+
+{% endblock %}

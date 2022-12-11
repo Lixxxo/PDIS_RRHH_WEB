@@ -1,0 +1,33 @@
+{% extends 'partials/forms/Form.html' %}
+{% block form_url %}
+/new
+{% endblock %}
+{% block form %}
+<h1 class="h5 mb-4">Añadir Trabajador</h1>
+
+<div class="mb-3">
+  <label>Nombre:</label>
+  <input
+    type="text"
+    name="name"
+    class="form-control rounded-0 bg-dark border-0 text-white"
+    placeholder="Nombre del trabajador"
+    autofocus
+    required
+  />
+</div>
+
+<div class="mb-3">
+  <label>Rut:</label>
+  <input
+    type="text"
+    name="rut"
+    class="form-control rounded-0 bg-dark border-0 text-white"
+    placeholder="Rut del trabajador"
+    required
+  />
+</div>
+
+
+<button class="btn btn-primary">Guardar</button>
+{% endblock %}

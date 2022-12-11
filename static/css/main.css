@@ -1,0 +1,21 @@
+body {
+  background: #121212;
+}
+
+.bg-black {
+  background: #090900 !important;
+}
+
+.flexRow {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-evenly;
+}
+
+.flexColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
