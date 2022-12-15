@@ -1,13 +1,16 @@
+# flask app and routes
 from flask import Flask, render_template
 from routes.employee import employees
 from routes.contract import contracts
 from routes.format import format
 
+# Database
 from flask_sqlalchemy import SQLAlchemy
 from config import SQLALCHEMY_DATABASE_URI
-from models.models import Employee
+from Models.models import Employee
 
 
+# create the app
 app = Flask(__name__)
 
 # settings
@@ -18,11 +21,12 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # no cache
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-SQLAlchemy(app)
-
 app.register_blueprint(employees)
 app.register_blueprint(contracts)
 app.register_blueprint(format)
+
+
+SQLAlchemy(app)
 
 
 @app.route('/')

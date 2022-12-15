@@ -3,7 +3,7 @@ from utils.validate import validate_run
 
 from flask import Blueprint, render_template, redirect, \
     request, flash, url_for
-from models.models import Employee
+from Models.models import Employee
 
 employees = Blueprint('employees', __name__)
 

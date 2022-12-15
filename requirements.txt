@@ -1,7 +1,6 @@
 # model view controller
 Flask==2.2.2
-Flask-SQLAlchemy==3.0.2
-SQLAlchemy==1.4.44
+Flask-SQLAlchemy==2.5.1
 
 # currency format
 Babel==2.11.0

@@ -1,9 +1,15 @@
 from utils.db import db
 from datetime import date
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from models.models import Contract, Employee, Project
+from Models.models import Contract, Employee, Project
+
+from RabbitMQ.rabbit import Rabbit
+import json
+
+
 contracts = Blueprint('contracts', __name__)
 
+rabbit = Rabbit()
 
 @contracts.route("/contracts/<employee_id>", methods=["GET"])
 def index(employee_id):
@@ -46,8 +52,7 @@ def hire():
         db.session.add(new_contract)
         db.session.commit()
 
-        # TODO: Publish a queue for rabbitMQ
-        # Exchange RRHH_fire, send project, salary
+        rabbit.publish(message=json.dumps(new_contract.to_json()), exchange="HHRR")
 
         flash("Trabajador contratado exitosamente!", "info")
         return redirect(url_for("contracts.index", employee_id=employee_id))
@@ -68,6 +73,8 @@ def fire(employee_id):
         db.session.commit()
 
         # TODO: Publish a queue for rabbitMQ
+        rabbit.publish(message=json.dumps(contract.to_json()), exchange="HHRR")
+
         # Exchange RRHH_fire, send project, salary
         flash("Trabajador desvinculado exitosamente!", "info")
         return redirect(url_for("contracts.index", employee_id=contract.employee_id))

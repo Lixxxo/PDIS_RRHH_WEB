@@ -1,5 +1,6 @@
 from utils.db import db
 from datetime import date
+import json
 
 
 class Contract(db.Model):
@@ -84,3 +85,8 @@ class Project(db.Model):
             'id': self.id,
             'name': self.name
         }
+
+    @staticmethod
+    def from_string(serialized_project: str) -> object:
+        json_dct = json.loads(serialized_project)
+        return Project(name=json_dct['Name'])
